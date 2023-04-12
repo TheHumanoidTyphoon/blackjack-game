@@ -38,6 +38,33 @@ body {
   background-color: #8689AC;
 }
 
+.notes__search {
+  padding: 1em;
+  margin-bottom: 20px;
+  background-color: #3F5576;
+  border: none;
+  color: #aaaaaa;
+  border-radius: 7px;
+  color: #ffffff;
+  font-size: 1.2em;
+  padding: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.notes__search input[type="text"] {
+  background-color: #0b49a6;
+  border: none;
+  border-radius: 7px;
+  color: #aaaaaa;
+  font-size: 1.2em;
+  padding: 0.5em;
+  width: 200%;
+  box-sizing: border-box;
+}
+
+
 .notes__list-item {
   cursor: pointer;
 }

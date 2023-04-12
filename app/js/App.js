@@ -12,13 +12,24 @@ export default class App {
 
     _refreshNotes() {
         const notes = NotesAPI.getAllNotes();
-
-        this._setNotes(notes);
-
+        const inpSearch = this.view.root.querySelector(".notes__search");
+        const query = inpSearch.value.trim().toLowerCase();
+    
+        if (query !== "") {
+            const filteredNotes = notes.filter(note =>
+                note.title.toLowerCase().includes(query) ||
+                note.body.toLowerCase().includes(query)
+            );
+            this._setNotes(filteredNotes);
+        } else {
+            this._setNotes(notes);
+        }
+    
         if (notes.length > 0) {
             this._setActiveNote(notes[0]);
         }
     }
+    
 
     _setNotes(notes) {
         this.notes = notes;
@@ -42,7 +53,7 @@ export default class App {
                     title: "New Note",
                     body: "Take note..."
                 };
-
+        
                 NotesAPI.saveNote(newNote);
                 this._refreshNotes();
             },
@@ -52,13 +63,20 @@ export default class App {
                     title,
                     body
                 });
-
+        
                 this._refreshNotes();
             },
             onNoteDelete: noteId => {
                 NotesAPI.deleteNote(noteId);
                 this._refreshNotes();
             },
+            onNoteSearch: query => {
+                const filteredNotes = this.notes.filter(note =>
+                    note.title.toLowerCase().includes(query) ||
+                    note.body.toLowerCase().includes(query)
+                );
+                this._setNotes(filteredNotes);
+            }
         };
     }
 }

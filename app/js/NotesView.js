@@ -6,19 +6,26 @@ export default class NotesView {
         this.onNoteEdit = onNoteEdit;
         this.onNoteDelete = onNoteDelete;
         this.root.innerHTML = `
-            <div class="notes__sidebar">
-                <button class="notes__add" type="button">Add Note</button>
-                <div class="notes__list"></div>
-            </div>
-            <div class="notes__preview">
-                <input class="notes__title" type="text" placeholder="New Note...">
-                <textarea class="notes__body">Take Note...</textarea>
-            </div>
+        <div class="notes__sidebar">
+            <button class="notes__add" type="button">Add Note</button>
+            <input class="notes__search" type="text" placeholder="Search notes...">
+            <div class="notes__list"></div>
+        </div>
+        <div class="notes__preview">
+            <input class="notes__title" type="text" placeholder="New Note...">
+            <textarea class="notes__body">Take Note...</textarea>
+        </div>
         `;
 
         const btnAddNote = this.root.querySelector(".notes__add");
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
+        const inpSearch = this.root.querySelector(".notes__search");
+        
+        inpSearch.addEventListener("input", () => {
+            const query = inpSearch.value.trim().toLowerCase();
+            this.onNoteSearch(query);
+        });
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
