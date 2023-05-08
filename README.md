@@ -16,4 +16,4 @@ The code is structured into two main files: `main.js` and `style.css`.
 
 `main.js` contains the JavaScript code that controls the behavior of the application. It defines two classes: `NotesView` and `NotesAPI`. `NotesView` is responsible for rendering the user interface, while `NotesAPI` provides an interface for interacting with the browser's local storage.
 
-`style.css` contains the `CSS` code that defines the look and feel of the application.
+`style.css` contains the `CSS` code that defines the look and feel of the .
